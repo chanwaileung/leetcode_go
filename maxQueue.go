@@ -52,7 +52,7 @@ func (this *MaxQueue) Max_value() int {
 func (this *MaxQueue) Push_back(value int) {
 	this.q = append(this.q, value)
 
-	for len(this.m) > 0 && this.m[len(this.m)-1] < value {
+	for len(this.m) > 0 && this.m[len(this.m)-1] < value {		//从末尾开始判断，如果小于value，就出栈，直到this.m为空或者大于等于value
 		this.m = this.m[0:len(this.m)-1]
 	}
 	this.m = append(this.m, value)
@@ -63,7 +63,7 @@ func (this *MaxQueue) Pop_front() int {
 	if len(this.q) > 0 {
 		n = this.q[0]
 		this.q = this.q[1:]
-		if n == this.m[0] {
+		if n == this.m[0] {		//如果等于this.m的话，就出栈
 			this.m = this.m[1:]
 		}
 	}
